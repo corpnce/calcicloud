@@ -44,7 +44,7 @@ PUBLIC_BASE_PATH=/
 PUBLIC_FORMSPREE_ID=your_formspree_id
 ```
 
-`PUBLIC_BASE_PATH` is useful for GitHub Pages project deployments. Leave it empty or `/` for a root-domain deployment.
+`PUBLIC_BASE_PATH` is useful for GitHub Pages project deployments. Leave it empty or `/` for the `calcicloud.com` custom-domain deployment.
 
 ## Commands
 
@@ -61,4 +61,4 @@ The production build outputs to `dist/`.
 
 - Keep `PUBLIC_SITE_URL` aligned with the real production domain so canonical URLs, Open Graph images, and sitemap output are correct.
 - The contact form is disabled until `PUBLIC_FORMSPREE_ID` is provided.
-- `robots.txt` assumes the default GitHub Pages URL is `https://corpnce.github.io/calcicloud/`. Update it if you move to a custom domain.
+- `robots.txt` assumes the production domain is `https://calcicloud.com`.

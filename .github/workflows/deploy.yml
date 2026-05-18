@@ -20,8 +20,8 @@ jobs:
       - name: Install, build, and upload site
         uses: withastro/action@v6
         env:
-          PUBLIC_SITE_URL: https://corpnce.github.io
-          PUBLIC_BASE_PATH: /calcicloud/
+          PUBLIC_SITE_URL: https://calcicloud.com
+          PUBLIC_BASE_PATH: /
 
   deploy:
     needs: build
