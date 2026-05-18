@@ -1,0 +1,36 @@
+---
+import { route } from '@/lib/routes';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost' | 'outline' | 'outlineBrand' | 'inverse';
+  external?: boolean;
+}
+
+const { href, variant = 'primary', external } = Astro.props;
+
+const resolved = external ? href : route(href);
+
+const base =
+  'hover-lift hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand';
+
+const styles = {
+  primary:
+    'border border-accent/55 bg-brand text-cream shadow-[0_16px_40px_rgb(166_31_31_/_0.25)] ring-accent-yellow hover:bg-brand-deep hover:shadow-[0_20px_48px_rgb(122_22_22_/_0.28)] hover:shadow-[0_20px_48px_rgb(255_200_92_/_0.16)]',
+  ghost: 'bg-warm-sand text-ink hover:bg-taupe/80',
+  outline:
+    'border border-ink/15 bg-cream/60 text-ink backdrop-blur hover:border-brand/40 hover:bg-cream',
+  outlineBrand:
+    'border border-brand/55 bg-transparent text-brand hover:bg-brand/[0.06] hover:border-brand',
+  inverse:
+    'border border-cream/35 bg-transparent text-cream hover:border-cream/60 hover:bg-cream hover:text-ink',
+};
+---
+
+<a
+  href={resolved}
+  class:list={[base, styles[variant]]}
+  {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+>
+  <slot />
+</a>

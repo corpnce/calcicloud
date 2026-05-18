@@ -1,0 +1,44 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ButtonLink from '@/components/ButtonLink.astro';
+import { siteName, tagline } from '@/config/site';
+
+const title = `About ${siteName}`;
+const description = `Learn how ${siteName} approaches cloud consulting, platform engineering and pragmatic training engagements.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero title="Practice built on humility and rigor." subtitle={tagline} />
+
+  <section class="border-b border-ink/5 bg-cream py-20 md:py-28">
+    <div class="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-[1.08fr_minmax(0,0.92fr)] md:items-start md:px-8 lg:gap-20">
+      <div class="space-y-10">
+        <SectionHeading
+          eyebrow="Principles"
+          title="Quiet infrastructure. Loud empathy for operators."
+          lead="We obsess over narratives people can replay after we leave — not dependency on a revolving door of consultants."
+        />
+        <ul class="space-y-5 text-sm leading-relaxed text-ink-muted md:text-base">
+          <li class="rounded-3xl border border-ink/10 bg-warm-sand/40 px-6 py-5">
+            <span class="font-semibold text-ink">Measure before manifesto.</span> Dashboards, customer journeys and financial signals shape our recommendations.
+          </li>
+          <li class="rounded-3xl border border-ink/10 bg-warm-sand/40 px-6 py-5">
+            <span class="font-semibold text-ink">Teach in the context of your risk.</span> Workshops reference how your industry handles residency, audit evidence and incidents.
+          </li>
+          <li class="rounded-3xl border border-ink/10 bg-warm-sand/40 px-6 py-5">
+            <span class="font-semibold text-ink">Optimize for compounding change.</span> Guardrails in code, not slide decks. Small batch improvements that respect on-call load.
+          </li>
+        </ul>
+      </div>
+      <aside class="space-y-8 rounded-[2rem] border border-ink/10 bg-gradient-to-br from-warm-sand via-cream to-taupe/40 p-10 shadow-soft">
+        <p class="text-xs font-semibold uppercase tracking-[0.26em] text-brand">Why the name</p>
+        <p class="text-sm leading-relaxed text-ink-muted">
+          <span class="font-semibold text-ink">CalciCloud</span> reflects precision at scale — measured, deliberate engineering — the same patience great platform teams apply when untangling organic growth.
+        </p>
+        <ButtonLink href="contact/">Talk with us</ButtonLink>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

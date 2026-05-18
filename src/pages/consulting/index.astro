@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ButtonLink from '@/components/ButtonLink.astro';
+import { siteName } from '@/config/site';
+
+const title = `Consulting | ${siteName}`;
+const description =
+  'Executive advisory, architecture and engineering for cloud foundations, Kubernetes, automation, observability and security.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero
+    title="Consulting that lands in production."
+    subtitle="Roadmaps anchored in measurable outcomes — availability, velocity, resilience and predictable spend."
+  />
+
+  <section class="border-b border-ink/5 bg-cream py-20 md:py-28">
+    <div class="mx-auto flex max-w-6xl flex-col gap-12 px-5 md:flex-row md:items-start md:justify-between md:px-8">
+      <SectionHeading
+        eyebrow="How we engage"
+        title="Three modes — pick the depth you need."
+        lead="Kick off with diagnostics, deepen with embedded delivery squads or keep us on-call for pivotal decisions across your platform lifecycle."
+      />
+      <div class="shrink-0 space-y-3 md:sticky md:top-28 md:text-right">
+        <ButtonLink href="contact/">Request a scoped proposal</ButtonLink>
+        <p class="max-w-[18rem] text-sm text-ink-muted md:ml-auto">
+          Typical starts: clarity workshop (1–3 days), 4–12 week uplift program, fractional leadership retainer.
+        </p>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-14 grid max-w-6xl gap-8 px-5 md:grid-cols-3 md:px-8">
+      {
+        [
+          {
+            heading: 'Advisory sprint',
+            text: 'Interviews with product, security and infra leaders; target architecture and risk register mapped to pragmatic initiatives.',
+          },
+          {
+            heading: 'Hands-on uplift',
+            text: 'Incremental refactors beside your engineers — infra modules, pipelines, rollout strategies and dashboards that compound week over week.',
+          },
+          {
+            heading: 'Ongoing steward',
+            text: 'Quarterly architecture council, backlog grooming for platform work and facilitation for incidents or vendor transitions.',
+          },
+        ].map((card) => (
+          <article class="rounded-3xl border border-ink/10 bg-warm-sand/45 p-8">
+            <h3 class="font-serif-display text-xl text-ink">{card.heading}</h3>
+            <p class="mt-4 text-sm leading-relaxed text-ink-muted">{card.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

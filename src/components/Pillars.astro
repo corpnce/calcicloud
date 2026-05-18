@@ -1,0 +1,401 @@
+---
+const headlineMetrics = [
+  { value: '75%', label: 'Faster team onboarding', sub: 'Golden path standardization' },
+  { value: '99.99%', label: 'Target availability', sub: 'Predictive + self-healing' },
+  { value: '80%', label: 'Incidents auto-resolved', sub: 'Guardrailed remediation' },
+] as const;
+
+const pillars = [
+  {
+    id: 'platform',
+    index: '01',
+    title: 'Unified Platform Engineering',
+    subtitle: 'Golden Path strategy',
+    pillar: 'Global-scale IDPs that abstract cloud complexity.',
+    different:
+      'We eliminate cognitive load — one-click deploy standards for New York and Singapore alike. Not just provisioning.',
+    help: 'Standardize the global stack, cut shadow IT, and slash onboarding time for new engineering teams.',
+    metric: '75%',
+    metricLabel: 'faster onboarding',
+    icon: 'platform',
+  },
+  {
+    id: 'aiops',
+    index: '02',
+    title: 'Cognitive AIOps',
+    subtitle: 'Predictive resilience',
+    pillar: 'Reactive monitoring → predictive observability.',
+    different:
+      'Agentic intelligence correlates signals across regions — silent failures surface before customers notice.',
+    help: 'Self-healing loops move you from 99.9% to 99.99% — often resolving incidents in milliseconds.',
+    metric: '99.99%',
+    metricLabel: 'availability target',
+    icon: 'aiops',
+  },
+  {
+    id: 'devsecops',
+    index: '03',
+    title: 'Sovereign DevSecOps',
+    subtitle: 'Compliance-as-code',
+    pillar: 'Security engineered across borders and jurisdictions.',
+    different:
+      'GDPR, CCPA, residency — compliance as code with guardrails that block non-compliant deploys. Not audit theater.',
+    help: 'Zero trust baked in so global teams access resources securely from any edge without compromising the core.',
+    metric: 'Zero',
+    metricLabel: 'trust perimeter',
+    icon: 'shield',
+  },
+] as const;
+
+const roadmap = [
+  {
+    feature: 'Edge-first design',
+    implementation: 'Global CDN (Vercel / Cloudflare)',
+    impact: '<100ms',
+    impactLabel: 'London · NYC · Tokyo',
+    icon: 'globe',
+  },
+  {
+    feature: 'Multi-language',
+    implementation: 'Ready-to-scale i18n',
+    impact: 'Global',
+    impactLabel: 'Market-ready signal',
+    icon: 'lang',
+  },
+  {
+    feature: 'Real-time trust',
+    implementation: 'Live infra status widget',
+    impact: 'Live',
+    impactLabel: 'Observability proof',
+    icon: 'pulse',
+  },
+] as const;
+
+const sunHubs = [
+  { city: 'London', tz: 'Europe/London' },
+  { city: 'New York', tz: 'America/New_York' },
+  { city: 'Singapore', tz: 'Asia/Singapore' },
+  { city: 'Tokyo', tz: 'Asia/Tokyo' },
+] as const;
+---
+
+<section
+  class="global-enterprise relative overflow-hidden border-b border-ink/5 bg-gradient-to-b from-warm-sand/40 via-cream to-cream py-16 text-ink md:py-24"
+  aria-labelledby="global-enterprise-heading"
+  data-pillars-section
+>
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_0%_50%,rgb(166_31_31_/_0.05),transparent_55%)]"
+    aria-hidden="true"
+  ></div>
+  <div class="pointer-events-none absolute -left-32 top-20 h-64 w-64 rounded-full bg-taupe/30 blur-3xl" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute right-0 top-1/4 h-96 w-96 rounded-full bg-brand/[0.06] blur-[120px]"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Global mesh — unique connector visual -->
+  <svg
+    class="pointer-events-none absolute left-1/2 top-[38%] hidden h-[min(520px,55vw)] w-[min(900px,95vw)] -translate-x-1/2 opacity-[0.35] lg:block"
+    viewBox="0 0 800 400"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="400" cy="200" r="6" fill="rgb(166 31 31 / 0.35)" />
+    <circle cx="120" cy="120" r="4" fill="rgb(166 31 31)" />
+    <circle cx="680" cy="100" r="4" fill="rgb(166 31 31)" />
+    <circle cx="640" cy="300" r="4" fill="rgb(166 31 31)" />
+    <circle cx="160" cy="280" r="4" fill="rgb(166 31 31)" />
+    <path d="M120 120 Q260 80 400 200" stroke="rgb(24 19 17 / 0.1)" stroke-width="1" stroke-dasharray="6 8" />
+    <path d="M680 100 Q540 60 400 200" stroke="rgb(24 19 17 / 0.1)" stroke-width="1" stroke-dasharray="6 8" />
+    <path d="M640 300 Q520 280 400 200" stroke="rgb(24 19 17 / 0.1)" stroke-width="1" stroke-dasharray="6 8" />
+    <path d="M160 280 Q280 240 400 200" stroke="rgb(24 19 17 / 0.1)" stroke-width="1" stroke-dasharray="6 8" />
+  </svg>
+
+  <div class="relative mx-auto max-w-6xl px-5 md:px-8">
+    <header class="mb-10 md:mb-12">
+      <p
+        class="inline-flex items-center rounded-full border border-accent/55 bg-accent/20 px-4 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-brand md:text-xs"
+      >
+        Global strategic pillars &amp; the edge
+      </p>
+      <h2
+        id="global-enterprise-heading"
+        class="mt-4 max-w-3xl font-serif-display text-[clamp(1.75rem,3.5vw+0.5rem,2.75rem)] font-bold leading-[1.06] tracking-[-0.03em] text-ink md:text-[clamp(2rem,3vw+0.75rem,3.25rem)]"
+      >
+        Modernizing the global enterprise architecture
+      </h2>
+    </header>
+
+    <!-- Outcome strip — scan in 3 seconds (bento pattern) -->
+    <ul class="mb-10 grid gap-4 sm:grid-cols-3 md:mb-14" role="list" aria-label="Key outcomes">
+      {
+        headlineMetrics.map((m) => (
+          <li class="relative overflow-hidden rounded-2xl border border-ink/8 bg-gradient-to-br from-white/90 to-warm-sand/50 p-5 shadow-[0_14px_40px_-20px_rgb(24_19_17_/_0.08)] ring-1 ring-ink/[0.04]">
+            <p class="font-serif-display text-3xl font-bold tabular-nums tracking-tight text-brand md:text-4xl">{m.value}</p>
+            <div class="mt-2 h-1 w-10 rounded-full bg-accent-yellow" aria-hidden="true"></div>
+            <p class="mt-1 text-sm font-semibold text-ink">{m.label}</p>
+            <p class="mt-0.5 text-xs text-ink-muted">{m.sub}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_320px]">
+      <!-- Pillar command deck — tabbed panels -->
+      <div class="min-w-0">
+        <div
+          class="pillar-tabs mb-4 flex flex-wrap gap-2"
+          role="tablist"
+          aria-label="Strategic pillars"
+        >
+          {
+            pillars.map((p, i) => (
+              <button
+                type="button"
+                role="tab"
+                id={`pillar-tab-${p.id}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-controls={`pillar-panel-${p.id}`}
+                data-pillar-tab={p.id}
+                class:list={[
+                  'rounded-full border px-4 py-2 text-left text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand',
+                  i === 0
+                    ? 'border-accent/60 bg-accent/20 text-ink shadow-[0_8px_24px_rgb(255_200_92_/_0.18)]'
+                    : 'border-ink/10 bg-cream/60 text-ink-muted hover:border-ink/20 hover:bg-warm-sand hover:text-ink',
+                ]}
+              >
+                <span class="mr-1.5 font-mono text-xs text-accent-yellow">{p.index}</span>
+                {p.title.split(' ').slice(0, 2).join(' ')}
+              </button>
+            ))
+          }
+        </div>
+
+        {
+          pillars.map((p, i) => (
+            <article
+              id={`pillar-panel-${p.id}`}
+              role="tabpanel"
+              aria-labelledby={`pillar-tab-${p.id}`}
+              data-pillar-panel={p.id}
+              hidden={i !== 0}
+              class="pillar-panel animate-fade-up overflow-hidden rounded-3xl border border-ink/8 bg-gradient-to-br from-white/95 to-warm-sand/40 shadow-[0_24px_64px_-28px_rgb(24_19_17_/_0.1)] ring-1 ring-ink/[0.04]"
+            >
+              <div class="grid gap-0 md:grid-cols-[minmax(140px,0.35fr)_1fr]">
+                <!-- Hero metric column -->
+                <div class="flex flex-col justify-between border-b border-ink/8 bg-warm-sand/50 p-6 md:border-b-0 md:border-r md:p-8">
+                  <div>
+                    <span class="font-mono text-xs font-semibold text-accent-yellow">{p.index}</span>
+                    <p class="mt-4 font-serif-display text-[clamp(2.5rem,6vw,3.5rem)] font-bold leading-none tabular-nums tracking-tight text-brand">
+                      {p.metric}
+                    </p>
+                    <p class="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-ink-muted">{p.metricLabel}</p>
+                  </div>
+                  <p class="mt-6 hidden text-sm font-medium text-ink-muted md:block">{p.pillar}</p>
+                </div>
+
+                <!-- Detail column -->
+                <div class="p-6 md:p-8">
+                  <h3 class="font-serif-display text-xl font-semibold text-ink md:text-2xl">{p.title}</h3>
+                  <p class="mt-1 text-sm font-medium text-brand/90">
+                    <span class="mr-2 inline-block h-1 w-4 rounded-full bg-accent-yellow align-middle" aria-hidden="true"></span>
+                    {p.subtitle}
+                  </p>
+                  <p class="mt-4 text-sm text-ink-muted md:hidden">{p.pillar}</p>
+
+                  <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-xl border-l-2 border-accent bg-brand/10 px-4 py-3">
+                      <p class="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-muted">Differentiator</p>
+                      <p class="mt-2 text-sm leading-relaxed text-ink">{p.different}</p>
+                    </div>
+                    <div class="rounded-xl border border-ink/8 bg-warm-sand/40 px-4 py-3 ring-1 ring-ink/[0.04]">
+                      <p class="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-ink-muted">How we help</p>
+                      <p class="mt-2 text-sm font-medium leading-relaxed text-ink">{p.help}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- Follow the sun -->
+      <aside
+        class="flex flex-col rounded-3xl border border-ink/8 bg-gradient-to-b from-white/90 to-warm-sand/50 p-5 shadow-[0_14px_40px_-20px_rgb(24_19_17_/_0.08)] ring-1 ring-ink/[0.04] md:p-6 lg:sticky lg:top-24 lg:self-start"
+        aria-labelledby="follow-the-sun-title"
+      >
+        <p id="follow-the-sun-title" class="font-serif-display text-base font-semibold">Follow the sun</p>
+        <p class="mt-1 text-xs leading-relaxed text-ink-muted">Coverage across every hub — one platform, all time zones.</p>
+
+        <div class="relative mx-auto mt-6 aspect-square w-full max-w-[220px]" aria-hidden="true">
+          <svg class="h-full w-full" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="100" r="88" stroke="rgb(24 19 17 / 0.12)" />
+            <path
+              d="M 100 28 A 72 72 0 1 1 99.5 28"
+              stroke="rgb(24 19 17 / 0.18)"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div
+            class="follow-sun-dot absolute left-1/2 top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[#ffd4a8] to-brand shadow-[0_0_16px_rgb(166_31_31_/_0.8)]"
+            style="offset-path: path('M 100 28 A 72 72 0 1 1 99.5 28');"
+          >
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="rounded-full border border-ink/10 bg-warm-sand/60 px-4 py-3 text-center">
+              <p class="text-[0.55rem] font-semibold uppercase tracking-widest text-ink-muted/80">UTC</p>
+              <p id="sun-utc-time" class="font-serif-display text-xl font-bold tabular-nums">--:--</p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="mt-5 space-y-2" id="world-clocks" role="list">
+          {
+            sunHubs.map((hub) => (
+              <li
+                class="flex items-center justify-between rounded-lg border border-ink/8 bg-cream px-3 py-2 text-sm"
+                data-tz={hub.tz}
+              >
+                <span class="font-medium text-ink">{hub.city}</span>
+                <time class="world-clock-time font-mono tabular-nums text-ink">--:--</time>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </div>
+
+    <!-- Roadmap bento -->
+    <div class="mt-16 md:mt-20">
+      <h3 class="font-serif-display text-xl font-semibold text-ink md:text-2xl">Global execution roadmap</h3>
+      <p class="mt-2 text-sm text-ink-muted">Delivery moves — with edge impact you can measure.</p>
+
+      <ul class="mt-8 grid gap-4 md:grid-cols-3" role="list">
+        {
+          roadmap.map((row) => (
+            <li class="group flex flex-col rounded-2xl border border-ink/8 bg-white/80 p-5 shadow-[0_12px_36px_-16px_rgb(24_19_17_/_0.08)] transition hover:border-brand/20 hover:shadow-[0_16px_44px_-16px_rgb(24_19_17_/_0.12)]">
+              <div class="flex items-start justify-between gap-3">
+                <span
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/45 bg-accent/20 text-brand ring-1 ring-accent/25"
+                  aria-hidden="true"
+                >
+                  {row.icon === 'globe' && (
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                    </svg>
+                  )}
+                  {row.icon === 'lang' && (
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <path d="m5 8 4 12M19 8l-4 12M3 12h7m4 0h7" />
+                    </svg>
+                  )}
+                  {row.icon === 'pulse' && (
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 14h4l2-12 4 16 2-8h8" />
+                    </svg>
+                  )}
+                </span>
+                <span class="rounded-full border border-accent/55 bg-accent/20 px-2.5 py-1 text-xs font-bold tabular-nums text-brand">
+                  {row.impact}
+                </span>
+              </div>
+              <h4 class="mt-4 font-semibold text-ink">{row.feature}</h4>
+              <p class="mt-2 flex-1 text-sm text-ink-muted">{row.implementation}</p>
+              <p class="mt-3 text-xs font-medium uppercase tracking-wider text-ink-muted/70">{row.impactLabel}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes follow-sun-orbit {
+    from {
+      offset-distance: 0%;
+    }
+    to {
+      offset-distance: 100%;
+    }
+  }
+
+  .follow-sun-dot {
+    animation: follow-sun-orbit 48s linear infinite;
+  }
+
+  .pillar-panel[hidden] {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .follow-sun-dot {
+      animation: none;
+      offset-distance: 25%;
+    }
+  }
+</style>
+
+<script>
+  function initPillarTabs() {
+    const section = document.querySelector('[data-pillars-section]');
+    if (!section) return;
+
+    const tabs = section.querySelectorAll<HTMLButtonElement>('[data-pillar-tab]');
+    const panels = section.querySelectorAll<HTMLElement>('[data-pillar-panel]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const id = tab.getAttribute('data-pillar-tab');
+        if (!id) return;
+
+        tabs.forEach((t) => {
+          const active = t.getAttribute('data-pillar-tab') === id;
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+          t.classList.toggle('border-accent/60', active);
+          t.classList.toggle('bg-accent/20', active);
+          t.classList.toggle('text-ink', active);
+          t.classList.toggle('shadow-[0_8px_24px_rgb(255_200_92_/_0.18)]', active);
+          t.classList.toggle('border-ink/10', !active);
+          t.classList.toggle('bg-cream/60', !active);
+          t.classList.toggle('text-ink-muted', !active);
+        });
+
+        panels.forEach((panel) => {
+          const show = panel.getAttribute('data-pillar-panel') === id;
+          panel.hidden = !show;
+        });
+      });
+    });
+  }
+
+  function formatTime(date: Date, timeZone: string) {
+    return new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone,
+    }).format(date);
+  }
+
+  function tickClocks() {
+    const now = new Date();
+    const utcEl = document.getElementById('sun-utc-time');
+    if (utcEl) utcEl.textContent = formatTime(now, 'UTC');
+
+    document.querySelectorAll<HTMLElement>('#world-clocks [data-tz]').forEach((row) => {
+      const tz = row.getAttribute('data-tz');
+      const timeEl = row.querySelector('.world-clock-time');
+      if (!tz || !timeEl) return;
+      timeEl.textContent = formatTime(now, tz);
+    });
+  }
+
+  initPillarTabs();
+  tickClocks();
+  setInterval(tickClocks, 30_000);
+</script>

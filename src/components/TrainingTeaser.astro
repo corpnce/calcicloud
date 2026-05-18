@@ -1,0 +1,133 @@
+---
+import ButtonLink from '@/components/ButtonLink.astro';
+
+const principles = [
+  { label: 'Internal R&D', detail: 'Labs born from our research' },
+  { label: 'Frontline consulting', detail: 'Proven on live systems' },
+  { label: 'First principles', detail: 'Undocumented problems solved' },
+] as const;
+
+const tracks = [
+  {
+    num: '01',
+    title: 'Cloud Architecture Studio',
+    tagline: 'From Whiteboard to Reference Stack.',
+    focus:
+      'Moving beyond single-provider patterns. We dive into the physics of multi-cloud networking, cross-region latency, and data sovereignty.',
+    research:
+      'We analyze current "Cloud-Exit" trends and high-availability post-mortems to build architectures that are resilient to provider-level outages.',
+    outcome:
+      'Your architects walk away with a custom-built Reference Architecture—a "North Star" stack tailored to your specific scale and security needs.',
+  },
+  {
+    num: '02',
+    title: 'DevOps Delivery Lab',
+    tagline: 'Engineering the Frictionless Path.',
+    focus:
+      'Hands-on CI/CD, secret management, and "Compliance-as-Code." We treat the pipeline as a product.',
+    research:
+      'We study the "DORA Metrics" of high-performing teams to implement release patterns that balance extreme speed with total safety.',
+    outcome:
+      'A library of reusable CI/CD Modules and a team that understands how to automate themselves out of repetitive toil.',
+  },
+  {
+    num: '03',
+    title: 'SRE & Observability Foundations',
+    tagline: 'The Science of Reliability.',
+    focus: 'SLIs/SLOs, Error Budgets, and Incident Rituals—taught directly on your existing tooling.',
+    research:
+      'We apply Chaos Engineering principles to proactively find system fractures before they become customer-facing outages.',
+    outcome:
+      'A culture shift from "Fixing Bugs" to "Managing Reliability," supported by an Incident Response Playbook that actually works under pressure.',
+  },
+] as const;
+---
+
+<section id="training" class="relative overflow-hidden border-b border-ink/5 bg-cream py-20 md:py-28">
+  <div
+    class="pointer-events-none absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-brand/[0.04] blur-3xl"
+    aria-hidden="true"
+  />
+
+  <div class="relative mx-auto max-w-6xl px-5 md:px-8">
+    <div class="grid gap-10 lg:grid-cols-[1.05fr_minmax(0,0.95fr)] lg:items-end lg:gap-12">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand"><span class="inline-block h-1 w-6 rounded-sm bg-accent-yellow mr-2 align-middle" aria-hidden="true"></span>Training</p>
+        <h2
+          class="mt-3 font-serif-display text-3xl font-bold tracking-tight text-ink md:text-4xl lg:text-[2.65rem] lg:leading-[1.06]"
+        >
+          Research-Led. Production-Proven.
+        </h2>
+        <p class="mt-4 text-sm leading-relaxed text-ink-muted md:text-base">
+          At our core, we believe upskilling is how consulting compounds. We don't sell "slideware catalogs." We offer
+          specialized labs born from our internal R&D and frontline consulting. We teach your teams to think from first
+          principles so they can solve problems that haven't been documented yet.
+        </p>
+        <div class="mt-6">
+          <ButtonLink href="training/">Programs & cohorts</ButtonLink>
+        </div>
+      </div>
+
+      <div
+        class="rounded-2xl border border-ink/8 bg-gradient-to-br from-warm-sand/60 to-white/80 p-5 ring-1 ring-ink/[0.04] md:p-6"
+        aria-label="How our labs are built"
+      >
+        <p class="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink-muted">Lab DNA</p>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-3" role="list">
+          {
+            principles.map((p) => (
+              <li class="rounded-xl border border-accent/40 bg-accent/15 px-3 py-3 text-center sm:text-left">
+                <p class="text-sm font-bold text-brand">{p.label}</p>
+                <p class="mt-0.5 text-xs text-ink-muted">{p.detail}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <ol class="mt-12 space-y-5 md:mt-14" role="list">
+      {
+        tracks.map((track, i) => (
+          <li
+            class:list={[
+              'animate-fade-up group overflow-hidden rounded-3xl border border-ink/8 bg-warm-sand/35 shadow-[0_20px_50px_-28px_rgb(24_19_17_/_0.12)] ring-1 ring-ink/[0.04] transition hover:border-brand/25 hover:shadow-[0_28px_60px_-24px_rgb(166_31_31_/_0.1)]',
+              i === 0 && 'motion-delay-1',
+              i === 1 && 'motion-delay-2',
+              i === 2 && 'motion-delay-3',
+            ]}
+          >
+            <div class="flex flex-col gap-4 border-b border-ink/[0.06] bg-cream/80 px-5 py-5 md:flex-row md:items-end md:justify-between md:px-7 md:py-6">
+              <div>
+                <p class="font-mono text-xs font-bold tracking-wider text-accent-yellow">Track {track.num}</p>
+                <h3 class="mt-1 font-serif-display text-xl font-semibold text-ink md:text-2xl">{track.title}</h3>
+                <p class="mt-1 text-sm font-medium text-ink-muted">{track.tagline}</p>
+              </div>
+              <span
+                class="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full border border-accent/55 bg-accent/20 font-mono text-sm font-bold text-brand md:flex"
+                aria-hidden="true"
+              >
+                {track.num}
+              </span>
+            </div>
+
+            <div class="grid gap-px bg-ink/[0.06] md:grid-cols-3">
+              <div class="bg-cream/90 p-5 md:p-6">
+                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand">The Focus</p>
+                <p class="mt-2 text-sm leading-relaxed text-ink-muted">{track.focus}</p>
+              </div>
+              <div class="bg-warm-sand/40 p-5 md:p-6">
+                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-ink-muted">Research element</p>
+                <p class="mt-2 text-sm leading-relaxed text-ink-muted">{track.research}</p>
+              </div>
+              <div class="border-t border-brand/15 bg-brand/[0.04] p-5 md:border-t-0 md:border-l md:p-6">
+                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-brand">The Outcome</p>
+                <p class="mt-2 text-sm font-medium leading-relaxed text-ink">{track.outcome}</p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

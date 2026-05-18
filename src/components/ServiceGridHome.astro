@@ -1,0 +1,190 @@
+---
+import ButtonLink from '@/components/ButtonLink.astro';
+
+const ethics = [
+  { label: 'Simplicity', detail: 'Over billable complexity' },
+  { label: 'Ownership', detail: 'Over vendor lock-in' },
+  { label: 'Strike team', detail: 'Not a body shop' },
+] as const;
+
+const pillars = [
+  {
+    num: 'I',
+    title: 'Cloud Foundations',
+    subtitle: 'Sovereign architecture',
+    lead: 'Production-ready environments in weeks, not months.',
+    icon: 'cloud',
+    items: [
+      { name: 'Landing zones', body: 'Multi-account structures that scale' },
+      { name: 'Zero-trust net', body: 'Security built into the network' },
+      { name: 'FinOps default', body: 'Cost is a first-class metric' },
+    ],
+  },
+  {
+    num: 'II',
+    title: 'Kubernetes',
+    subtitle: 'Developer-first stack',
+    lead: 'K8s as an asset — not a burden.',
+    icon: 'k8s',
+    items: [
+      { name: 'Cluster strategy', body: 'No cluster sprawl' },
+      { name: 'GitOps delivery', body: 'Flagger · ArgoCD path to prod' },
+      { name: 'Golden path', body: 'IDP — code over YAML' },
+    ],
+  },
+  {
+    num: 'III',
+    title: 'Deterministic automation',
+    subtitle: 'Policy-as-code',
+    lead: 'Eliminate human error at the source.',
+    icon: 'iac',
+    items: [
+      { name: 'IaC', body: 'Maintainable Terraform / OpenTofu' },
+      { name: 'Drift control', body: 'Prod matches code — always' },
+      { name: 'OPA / Kyverno', body: 'Silent auditor on every PR' },
+    ],
+  },
+  {
+    num: 'IV',
+    title: 'Applied reliability',
+    subtitle: 'SRE mindset',
+    lead: 'Resilience as culture — not a product.',
+    icon: 'sre',
+    items: [
+      { name: 'SLOs & budgets', body: 'Tech aligned to business' },
+      { name: 'Chaos engineering', body: 'Break before customers do' },
+      { name: 'Post-mortems', body: 'Incidents → institutional knowledge' },
+    ],
+  },
+] as const;
+---
+
+<section id="capabilities" class="relative overflow-hidden border-b border-ink/6 bg-gradient-to-b from-warm-sand/30 to-cream py-20 md:py-28">
+  <div
+    class="pointer-events-none absolute -right-20 top-0 h-72 w-72 rounded-full bg-brand/[0.05] blur-3xl"
+    aria-hidden="true"
+  />
+
+  <div class="relative mx-auto max-w-6xl px-5 md:px-8">
+    <div class="grid gap-10 lg:grid-cols-[1.1fr_minmax(0,0.9fr)] lg:items-end lg:gap-12">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+          <span class="mr-2 inline-block h-1 w-6 rounded-sm bg-accent-yellow align-middle" aria-hidden="true"></span>
+          Consulting
+        </p>
+        <h2
+          class="mt-3 font-serif-display text-3xl font-bold tracking-tight text-ink md:text-4xl lg:text-[2.65rem] lg:leading-[1.06]"
+        >
+          High-velocity engineering core
+        </h2>
+        <p class="mt-4 max-w-md text-sm font-medium text-ink-muted md:text-base">
+          Infrastructure that multiplies your business — an elite strike team, not a body shop.
+        </p>
+        <div class="mt-6">
+          <ButtonLink href="consulting/">Full consulting scope</ButtonLink>
+        </div>
+      </div>
+
+      <div
+        class="rounded-2xl border border-ink/8 bg-gradient-to-br from-white/90 to-warm-sand/50 p-5 ring-1 ring-ink/[0.04] md:p-6"
+        aria-label="Engineering ethics"
+      >
+        <p class="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ink-muted">Engineering ethics</p>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3" role="list">
+          {
+            ethics.map((e) => (
+              <li class="rounded-xl border border-brand/15 bg-brand/[0.05] px-3 py-3 text-center lg:text-left">
+                <p class="text-sm font-bold text-brand">{e.label}</p>
+                <p class="mt-0.5 text-xs text-ink-muted">{e.detail}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 hidden items-center md:flex" aria-hidden="true">
+      {
+        pillars.map((p, i) => (
+          <div class:list={['flex items-center', i < pillars.length - 1 ? 'flex-1' : '']}>
+            {i > 0 && <div class="mx-2 h-px flex-1 bg-gradient-to-r from-brand/30 to-brand/10" />}
+            <span class="shrink-0 rounded-full border border-accent/55 bg-accent/20 px-3 py-1 font-mono text-xs font-bold text-brand">
+              {p.num}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+
+    <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:mt-10 lg:gap-6" role="list">
+      {
+        pillars.map((pillar, i) => (
+          <li
+            class:list={[
+              'animate-fade-up group flex flex-col overflow-hidden rounded-3xl border border-ink/8 bg-cream shadow-[0_20px_50px_-24px_rgb(24_19_17_/_0.1)] ring-1 ring-ink/[0.04] transition hover:border-brand/20 hover:shadow-[0_28px_60px_-24px_rgb(166_31_31_/_0.12)]',
+              i === 0 && 'motion-delay-1',
+              i === 1 && 'motion-delay-2',
+              i === 2 && 'motion-delay-3',
+              i === 3 && 'motion-delay-4',
+            ]}
+          >
+            <div class="flex items-start justify-between gap-3 border-b border-ink/[0.06] bg-warm-sand/40 px-5 py-4 md:px-6">
+              <div class="min-w-0">
+                <span class="font-mono text-xs font-bold text-accent-yellow">{pillar.num}</span>
+                <h3 class="mt-1 font-serif-display text-lg font-semibold leading-tight text-ink md:text-xl">
+                  {pillar.title}
+                </h3>
+                <span class="mt-1.5 inline-block rounded-full border border-ink/10 bg-cream px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-ink-muted">
+                  {pillar.subtitle}
+                </span>
+              </div>
+              <span
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent/45 bg-accent/20 text-brand"
+                aria-hidden="true"
+              >
+                {pillar.icon === 'cloud' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a4.5 4.5 0 0 0 1.606-8.748 4.502 4.502 0 0 0-7.452-2.18A4.5 4.5 0 0 0 2.25 15Z"
+                    />
+                  </svg>
+                )}
+                {pillar.icon === 'k8s' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" d="m8 14 4 2 4-2M8 10l4-2 4 2M8 18l4 2 4-2" />
+                    <path stroke-linecap="round" d="M8 10v8m8-8v8" />
+                  </svg>
+                )}
+                {pillar.icon === 'iac' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                )}
+                {pillar.icon === 'sre' && (
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" d="M4 14h4l2-12 4 16 2-8h8" />
+                  </svg>
+                )}
+              </span>
+            </div>
+
+            <p class="border-l-2 border-brand/50 px-5 py-3 text-sm font-medium text-ink-muted md:px-6">{pillar.lead}</p>
+
+            <ul class="mt-auto grid grid-cols-1 gap-2 p-4 pt-2 sm:grid-cols-3 md:p-5" role="list">
+              {
+                pillar.items.map((item) => (
+                  <li class="rounded-xl bg-warm-sand/50 p-3 ring-1 ring-ink/[0.05] transition group-hover:bg-warm-sand/80">
+                    <p class="text-xs font-bold leading-snug text-ink">{item.name}</p>
+                    <p class="mt-1 text-[0.7rem] leading-snug text-ink-muted">{item.body}</p>
+                  </li>
+                ))
+              }
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

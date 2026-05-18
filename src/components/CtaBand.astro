@@ -1,0 +1,28 @@
+---
+import ButtonLink from '@/components/ButtonLink.astro';
+---
+
+<section class="relative overflow-hidden bg-ink text-cream">
+  <div class="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
+    <div class="animate-soft-pulse absolute -left-10 top-0 h-64 w-64 rounded-full bg-brand blur-3xl" />
+    <div class="animate-float-slow absolute bottom-[-30%] right-[-5%] h-80 w-80 rounded-full bg-mocha/50 blur-3xl" />
+  </div>
+  <div class="relative mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-24">
+    <div class="grid gap-10 lg:grid-cols-[1.1fr_minmax(0,0.9fr)] lg:items-center">
+      <div class="animate-fade-up space-y-5">
+        <p class="text-xs font-semibold uppercase tracking-[0.26em] text-taupe">Make your next move deliberate</p>
+        <h2 class="font-serif-display motion-delay-1 animate-fade-up max-w-xl text-3xl leading-tight md:text-4xl">
+          From pilot to platform — we help you choose the path, build the spine and teach the team.
+        </h2>
+        <p class="motion-delay-2 animate-fade-up max-w-lg text-sm leading-relaxed text-cream/75 md:text-base">
+          Share where you are today — we'll respond with a concise view of options, risks and a realistic sequence of
+          work. No spray-and-pray proposals.
+        </p>
+      </div>
+      <div class="motion-delay-3 animate-pop-in flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-stretch">
+        <ButtonLink href="contact/">Schedule a discovery call</ButtonLink>
+        <ButtonLink href="consulting/" variant="inverse">Review consulting scope</ButtonLink>
+      </div>
+    </div>
+  </div>
+</section>

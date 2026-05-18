@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://corpnce.github.io/calcicloud/sitemap-index.xml

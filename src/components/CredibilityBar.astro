@@ -1,0 +1,47 @@
+---
+import awsLogo from '@/assets/logos/aws.svg';
+import azureLogo from '@/assets/logos/azure.svg';
+import googleCloudLogo from '@/assets/logos/google-cloud.svg';
+import kubernetesLogo from '@/assets/logos/kubernetes.svg';
+
+const ecosystems = [
+  { name: 'AWS', logo: awsLogo },
+  { name: 'Microsoft Azure', logo: azureLogo },
+  { name: 'Google Cloud', logo: googleCloudLogo },
+  { name: 'Kubernetes-native', logo: kubernetesLogo },
+] as const;
+---
+
+<section class="relative z-10 border-b border-ink/[0.06] bg-gradient-to-b from-warm-sand/90 via-warm-sand/50 to-cream py-10 md:py-12">
+  <div class="mx-auto max-w-6xl px-5 md:px-8">
+    <p class="mb-6 text-center text-xs font-semibold uppercase tracking-[0.22em] text-ink-muted/90 md:text-left md:tracking-[0.26em]">
+      Trusted patterns across ecosystems
+    </p>
+    <div
+      class="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 md:justify-between lg:gap-x-12"
+      role="list"
+      aria-label="Cloud and platform ecosystems"
+    >
+      {
+        ecosystems.map(({ name, logo }) => (
+          <span
+            role="listitem"
+            class="group inline-flex items-center gap-3 font-semibold tracking-wide text-ink/45 transition hover:text-ink/70 md:text-lg"
+          >
+            <img
+              src={logo.src}
+              width={logo.width}
+              height={logo.height}
+              alt=""
+              class="h-8 w-8 shrink-0 object-contain opacity-70 grayscale transition group-hover:opacity-90 group-hover:grayscale-0 md:h-9 md:w-9"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+            {name}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>

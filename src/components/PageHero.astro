@@ -1,0 +1,31 @@
+---
+import { siteName } from '@/config/site';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-ink/5 bg-gradient-to-b from-taupe/30 via-cream to-cream">
+  <div
+    class="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-brand/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="pointer-events-none absolute bottom-0 left-0 h-48 w-48 rounded-full bg-mocha/35 blur-2xl" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <p class="text-xs font-semibold uppercase tracking-[0.26em] text-brand">
+      <span class="mr-2 inline-block h-1 w-6 rounded-sm bg-accent-yellow align-middle" aria-hidden="true"></span>
+      {siteName}
+    </p>
+    <h1 class="font-serif-display mt-6 max-w-3xl text-4xl tracking-tight text-ink md:text-5xl lg:text-6xl">
+      {title}
+    </h1>
+    {subtitle ? <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted md:text-xl">{subtitle}</p> : null}
+    <slot />
+  </div>
+</section>

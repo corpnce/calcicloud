@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import ButtonLink from '@/components/ButtonLink.astro';
+import heroImage from '@/assets/calcicloud_homepage_top.png';
+---
+
+<section class="relative overflow-hidden bg-transparent pb-14 pt-12 md:pt-16 md:pb-16 lg:min-h-[min(85vh,820px)] lg:pb-20 lg:pt-20">
+  <!-- Illustration merged into the background: no frame — full-bleed right, fades into cream -->
+  <div
+    class="pointer-events-none absolute inset-0 select-none lg:inset-y-0 lg:left-[38%] lg:right-0 lg:h-full lg:w-auto"
+    aria-hidden="true"
+  >
+    <Image
+      src={heroImage}
+      alt=""
+      role="presentation"
+      class="h-[42vh] w-full origin-center scale-100 object-cover object-[center_45%] sm:h-[48vh] lg:absolute lg:inset-0 lg:h-full lg:scale-[1.03]"
+      loading="eager"
+      decoding="async"
+      widths={[640, 960, 1280, 1536, 1920]}
+      sizes="100vw"
+    />
+    <!-- Blend into page background (no hard “card” edge) -->
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-cream from-0% via-cream/88 via-48% to-transparent to-85% lg:from-0% lg:via-cream/85 lg:via-32% lg:to-transparent lg:to-78%"
+    ></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-cream/25 via-transparent to-cream/50 lg:hidden"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-5 md:px-8">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+      <!-- Copy: sits above the artwork on mobile; reads on solid blend -->
+      <div class="animate-fade-up order-2 max-w-xl space-y-6 lg:order-1 lg:max-w-none lg:pr-4 xl:pr-6">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ink-muted md:text-xs md:tracking-[0.24em]">
+          <span class="mr-2 inline-block h-1 w-6 rounded-sm bg-accent-yellow align-middle" aria-hidden="true"></span>
+          Cloud & DevOps consultancy
+        </p>
+        <div class="space-y-5">
+          <h1 class="font-serif-display text-[clamp(2.025rem,4.104vw+0.378rem,3.105rem)] font-bold leading-[1.08] tracking-[-0.025em] text-ink md:text-[clamp(2.295rem,3.456vw+0.54rem,3.51rem)]">
+            Focus on Speed to Market and Zero-Trust Security
+          </h1>
+          <p class="font-serif-display text-lg font-semibold leading-snug text-brand md:text-xl md:leading-snug">
+            Strategy <span class="text-accent-yellow">·</span> Platform <span class="text-accent-yellow">·</span> Reliability
+          </p>
+          <p class="max-w-[34rem] text-sm leading-relaxed text-ink-muted md:text-base md:leading-relaxed">
+            Scale without the friction. We build AI-native infrastructure that heals itself, so your developers can focus on
+            code, not clusters.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-1">
+            <ButtonLink href="consulting/">Explore consulting</ButtonLink>
+            <ButtonLink href="contact/" variant="outlineBrand">Talk to us</ButtonLink>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacer: artwork is background-only on large screens -->
+      <div class="order-1 hidden min-h-[12rem] lg:order-2 lg:block lg:min-h-0" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>

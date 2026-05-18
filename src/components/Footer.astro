@@ -1,0 +1,60 @@
+---
+import { siteName, tagline } from '@/config/site';
+import { route } from '@/lib/routes';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-ink/10 bg-warm-sand/40">
+  <div class="mx-auto max-w-6xl space-y-12 px-5 py-16 md:px-8">
+    <div class="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-start">
+      <div class="space-y-4">
+        <a
+          href={route('')}
+          class="inline-flex items-center gap-2 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          aria-label={siteName}
+        >
+          <img src={route('logo.png')} alt={siteName} class="h-24 w-auto md:h-28" />
+          <span class="sr-only">{siteName}</span>
+        </a>
+        <p class="max-w-md text-ink-muted">{tagline}</p>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <a
+            href={route('contact/')}
+            class="inline-flex rounded-full border border-accent/55 bg-brand px-5 py-2 text-sm font-semibold text-cream shadow-[0_10px_24px_rgb(255_200_92_/_0.12)] transition hover:bg-brand-deep"
+            >Start a project</a
+          >
+          <a
+            href={route('training/')}
+            class="inline-flex rounded-full border border-ink/15 bg-cream px-5 py-2 text-sm font-semibold text-ink transition hover:border-brand/40"
+            >View training</a
+          >
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-8 text-sm">
+        <div>
+          <p class="font-semibold text-ink">Explore</p>
+          <ul class="mt-3 space-y-2 text-ink-muted">
+            <li><a class="hover:text-brand" href={route('consulting/')}>Consulting</a></li>
+            <li><a class="hover:text-brand" href={route('training/')}>Training</a></li>
+            <li><a class="hover:text-brand" href={route('about/')}>About</a></li>
+            <li><a class="hover:text-brand" href={route('contact/')}>Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-ink">Focus</p>
+          <ul class="mt-3 space-y-2 text-ink-muted">
+            <li>Multi-cloud architecture</li>
+            <li>Platform engineering</li>
+            <li>Reliability &amp; SRE</li>
+            <li>Security &amp; compliance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3 border-t border-ink/10 pt-8 text-sm text-ink-muted md:flex-row md:items-center md:justify-between">
+      <p>© {year} {siteName}. All rights reserved.</p>
+      <p class="text-balance">Built for clarity — not lock-in.</p>
+    </div>
+  </div>
+</footer>

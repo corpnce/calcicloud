@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroHome from '@/components/HeroHome.astro';
+import Pillars from '@/components/Pillars.astro';
+import ServiceGridHome from '@/components/ServiceGridHome.astro';
+import TrainingTeaser from '@/components/TrainingTeaser.astro';
+import CredibilityBar from '@/components/CredibilityBar.astro';
+import AiOpsDifferentiator from '@/components/AiOpsDifferentiator.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import { siteName, tagline } from '@/config/site';
+
+const title = `${siteName} — Cloud & DevOps consulting`;
+---
+
+  <BaseLayout title={title} description={tagline}>
+  <HeroHome />
+  <CredibilityBar />
+  <AiOpsDifferentiator />
+  <Pillars />
+  <ServiceGridHome />
+  <TrainingTeaser />
+  <CtaBand />
+</BaseLayout>

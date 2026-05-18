@@ -1,0 +1,216 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ButtonLink from '@/components/ButtonLink.astro';
+import TrainingSkillCheck from '@/components/training/TrainingSkillCheck.astro';
+import { ethicsPillars, trainingTracks } from '@/data/training-page';
+import { labsEmail, siteName } from '@/config/site';
+
+const title = `Training — Beyond Slideware | ${siteName}`;
+const description =
+  'Elite engineering labs born from global consulting — Platform Engineering, multi-cloud architecture, and Day 2 operational realities taught on live systems.';
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Hero: dark blueprint -->
+  <section class="blueprint-grid relative overflow-hidden border-b border-cream/10">
+    <div
+      class="pointer-events-none absolute inset-0 bg-gradient-to-b from-brand/10 via-transparent to-ink"
+      aria-hidden="true"
+    ></div>
+    <div class="relative mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+      <p class="font-mono-tech text-xs font-semibold uppercase tracking-[0.24em] text-brand">Training / 2026</p>
+      <h1 class="mt-4 max-w-3xl font-serif-display text-4xl font-bold tracking-tight text-cream md:text-5xl lg:text-6xl">
+        Moving Beyond Slideware.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-cream/75 md:text-xl">
+        We don't sell generic certifications. We build elite engineering teams. Our training is born from our global
+        consulting labs, taught on live systems, and focused on the{' '}
+        <span class="font-mono-tech text-brand">"Day 2"</span> operational realities that most courses ignore.
+      </p>
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <ButtonLink href="#tracks" variant="primary">Explore the Tracks</ButtonLink>
+        <ButtonLink href="contact/" variant="outlineBrand">Request a Private Cohort</ButtonLink>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Skills Gap -->
+  <section id="skills-gap" class="scroll-mt-28 border-b border-ink/5 bg-cream py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-5 md:px-8">
+      <div class="max-w-2xl">
+        <p class="font-mono-tech text-xs font-semibold uppercase tracking-[0.2em] text-brand">Market Research</p>
+        <h2 class="mt-3 font-serif-display text-3xl font-bold text-ink md:text-4xl">The 2026 Skills Gap</h2>
+        <p class="mt-3 text-lg text-ink-muted">Why our training is different.</p>
+      </div>
+      <p class="mt-8 max-w-3xl text-base leading-relaxed text-ink-muted md:text-lg">
+        The global cloud market in 2026 has evolved. Traditional{' '}
+        <span class="font-mono-tech text-ink">"lift-and-shift"</span> is dead. Today's job market expects Cloud
+        Engineers to be architects of automation.
+      </p>
+
+      <ul class="mt-12 grid gap-5 md:grid-cols-3" role="list">
+        <li class="blueprint-grid-subtle rounded-2xl border border-ink/8 bg-warm-sand/50 p-6 ring-1 ring-ink/[0.04]">
+          <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-wider text-brand">Bangalore Advantage</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+            We bridge the gap between academic theory and the high-scale engineering demands of Bangalore's "Silicon
+            Valley" and global tech hubs.
+          </p>
+        </li>
+        <li class="blueprint-grid-subtle rounded-2xl border border-ink/8 bg-warm-sand/50 p-6 ring-1 ring-ink/[0.04]">
+          <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-wider text-brand">Job Market Realities</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+            Lead Cloud Engineer roles (<span class="font-mono-tech text-ink">₹25L – ₹45L+</span>) now require mastery of{' '}
+            <span class="font-mono-tech">Platform Engineering</span>, <span class="font-mono-tech">AIOps</span>, and{' '}
+            <span class="font-mono-tech">Cross-Cloud Governance</span>.
+          </p>
+        </li>
+        <li class="blueprint-grid-subtle rounded-2xl border border-ink/8 bg-warm-sand/50 p-6 ring-1 ring-ink/[0.04]">
+          <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-wider text-brand">Day 2 Focus</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+            Labs target operational realities — drift, incident rituals, cost sovereignty — that certification curricula
+            rarely touch.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 2: Tracks + Skill-Check -->
+  <section id="tracks" class="scroll-mt-28 border-b border-cream/10 bg-ink py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-5 md:px-8">
+      <div class="max-w-2xl">
+        <p class="font-mono-tech text-xs font-semibold uppercase tracking-[0.2em] text-brand">Curriculum</p>
+        <h2 class="mt-3 font-serif-display text-3xl font-bold text-cream md:text-4xl">The Training Tracks</h2>
+      </div>
+
+      <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,18rem)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_20rem]">
+        <div class="space-y-8">
+          {
+            trainingTracks.map((track, i) => (
+              <article
+                id={track.id}
+                class:list={[
+                  'blueprint-grid scroll-mt-28 overflow-hidden rounded-3xl border border-cream/10 p-6 shadow-[0_28px_70px_rgb(0_0_0_/_0.4)] ring-1 ring-brand/15 md:p-8',
+                  i === 0 && 'motion-delay-1 animate-fade-up',
+                  i === 1 && 'motion-delay-2 animate-fade-up',
+                  i === 2 && 'motion-delay-3 animate-fade-up',
+                ]}
+              >
+                <div class="flex flex-wrap items-start justify-between gap-3 border-b border-cream/10 pb-5">
+                  <div>
+                    <p class="font-mono-tech text-xs font-bold text-brand">Track {track.num}</p>
+                    <h3 class="mt-1 font-serif-display text-xl font-semibold text-cream md:text-2xl">{track.title}</h3>
+                    <p class="mt-2 text-sm text-cream/60">
+                      Designed for: <span class="font-medium text-cream/85">{track.audience}</span>
+                    </p>
+                  </div>
+                </div>
+
+                <p class="mt-5 border-l-2 border-brand/60 pl-4 text-sm font-medium text-cream/80">
+                  <span class="font-mono-tech text-[0.65rem] uppercase tracking-wider text-brand">The Focus · </span>
+                  {track.focus}
+                </p>
+
+                <div class="mt-6">
+                  <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-wider text-cream/50">
+                    The Modules
+                  </p>
+                  <ul class="mt-3 grid gap-3 sm:grid-cols-3" role="list">
+                    {
+                      track.modules.map((mod) => (
+                        <li class="rounded-xl border border-cream/10 bg-cream/[0.04] p-4">
+                          <p class="text-sm font-semibold text-cream">{mod.name}</p>
+                          <p class="mt-1 text-xs leading-relaxed text-cream/60">{mod.detail}</p>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                </div>
+
+                <div class="mt-6 rounded-xl border border-brand/20 bg-brand/10 p-4 md:p-5">
+                  <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-wider text-brand">
+                    Research Lab
+                  </p>
+                  <p class="mt-2 text-sm leading-relaxed text-cream/80">{track.researchLab}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <TrainingSkillCheck />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Ethics -->
+  <section id="ethics" class="scroll-mt-28 border-b border-ink/5 bg-gradient-to-b from-warm-sand/50 to-cream py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-5 md:px-8">
+      <div class="max-w-2xl">
+        <p class="font-mono-tech text-xs font-semibold uppercase tracking-[0.2em] text-brand">Our Ethics</p>
+        <h2 class="mt-3 font-serif-display text-3xl font-bold text-ink md:text-4xl">The "Founder-Led" Commitment</h2>
+        <p class="mt-4 text-lg text-ink-muted">As a startup, our reputation is our currency.</p>
+      </div>
+      <ul class="mt-12 grid gap-5 md:grid-cols-3" role="list">
+        {
+          ethicsPillars.map((pillar) => (
+            <li class="rounded-2xl border border-brand/15 bg-brand/[0.04] p-6 ring-1 ring-ink/[0.04]">
+              <h3 class="font-serif-display text-lg font-semibold text-ink">{pillar.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted">{pillar.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: Enrollment -->
+  <section id="enrollment" class="scroll-mt-28 blueprint-grid border-b border-cream/10 py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-5 md:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1.1fr_minmax(0,0.9fr)] lg:items-center">
+        <div>
+          <p class="font-mono-tech text-xs font-semibold uppercase tracking-[0.2em] text-brand">Enrollment</p>
+          <h2 class="mt-3 font-serif-display text-3xl font-bold text-cream md:text-4xl">Custom Labs & Private Cohorts</h2>
+          <p class="mt-4 text-lg leading-relaxed text-cream/75">
+            Are you a CTO scaling a team? We don't do "one-size-fits-all." We build custom curriculum based on your
+            specific stack (<span class="font-mono-tech text-brand">AWS</span> /{' '}
+            <span class="font-mono-tech text-brand">GCP</span> / <span class="font-mono-tech text-brand">Azure</span>)
+            and your team's maturity.
+          </p>
+          <div class="mt-8">
+            <ButtonLink href="contact/" variant="primary">Schedule a Curriculum Deep-Dive</ButtonLink>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 font-mono-tech text-sm text-cream/80 ring-1 ring-brand/20 md:p-8">
+          <p class="text-cream/50">// private_cohort.config</p>
+          <p class="mt-4">
+            <span class="text-brand">stack</span>: [<span class="text-cream">"aws"</span>,{' '}
+            <span class="text-cream">"k8s"</span>, <span class="text-cream">"opentofu"</span>]
+          </p>
+          <p class="mt-2">
+            <span class="text-brand">format</span>: <span class="text-cream">"live_backlog"</span>
+          </p>
+          <p class="mt-2">
+            <span class="text-brand">slides</span>: <span class="text-cream">false</span>
+          </p>
+          <p class="mt-6 text-cream/50">$ git commit -m "upgrade your engineering culture"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer hook -->
+  <section class="bg-warm-sand/40 py-12 md:py-14">
+    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 md:flex-row md:items-center md:px-8">
+      <p class="font-mono-tech text-sm text-ink-muted">
+        <span class="text-brand">$</span> git commit -m <span class="text-ink">"upgrade your engineering culture"</span>
+      </p>
+      <a
+        href={`mailto:${labsEmail}`}
+        class="font-mono-tech text-sm font-semibold text-brand underline decoration-brand/40 underline-offset-2 hover:text-brand-deep"
+      >
+        {labsEmail}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

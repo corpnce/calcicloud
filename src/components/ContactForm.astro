@@ -1,0 +1,99 @@
+---
+import { formspreeId } from '@/config/site';
+
+const action = formspreeId ? `https://formspree.io/f/${formspreeId}` : '';
+---
+
+<form {...(action ? { action, method: 'POST' as const } : {})} class="space-y-6">
+  {
+    !action ? (
+      <p class="rounded-2xl border border-brand/35 bg-brand/5 px-4 py-3 text-sm text-ink-muted">
+        Set <code class="rounded bg-warm-sand px-1.5 py-0.5 text-xs text-ink">PUBLIC_FORMSPREE_ID</code> in your{' '}
+        <code class="rounded bg-warm-sand px-1.5 py-0.5 text-xs text-ink">.env</code> to activate this form.
+      </p>
+    ) : null
+  }
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    <label class="block space-y-2">
+      <span class="text-sm font-medium text-ink">Name</span>
+      <input
+        {...(action ? { name: 'name' } : { disabled: true })}
+        autocomplete="name"
+        class="w-full rounded-2xl border border-ink/12 bg-warm-sand/50 px-4 py-3 text-sm text-ink placeholder:text-ink-muted/55 focus:border-brand/50 focus:bg-cream focus:outline-none disabled:opacity-55"
+        placeholder="Your full name"
+        required={Boolean(action)}
+      />
+    </label>
+    <label class="block space-y-2">
+      <span class="text-sm font-medium text-ink">Organization</span>
+      <input
+        {...(action ? { name: 'organization', type: 'text' as const } : { disabled: true })}
+        autocomplete="organization"
+        class="w-full rounded-2xl border border-ink/12 bg-warm-sand/50 px-4 py-3 text-sm text-ink placeholder:text-ink-muted/55 focus:border-brand/50 focus:bg-cream focus:outline-none disabled:opacity-55"
+        placeholder="Company or team name"
+      />
+    </label>
+  </div>
+
+  <label class="block space-y-2">
+    <span class="text-sm font-medium text-ink">Email</span>
+    <input
+      {...(action ? { name: 'email', type: 'email' as const } : { disabled: true })}
+      autocomplete="email"
+      class="w-full rounded-2xl border border-ink/12 bg-warm-sand/50 px-4 py-3 text-sm text-ink placeholder:text-ink-muted/55 focus:border-brand/50 focus:bg-cream focus:outline-none disabled:opacity-55"
+      placeholder="you@organization.com"
+      required={Boolean(action)}
+    />
+  </label>
+
+  <label class="block space-y-2">
+    <span class="text-sm font-medium text-ink">What can we help with?</span>
+    <select
+      {...(action ? { name: 'intent' } : { disabled: true })}
+      class="w-full rounded-2xl border border-ink/12 bg-warm-sand/50 px-4 py-3 text-sm text-ink focus:border-brand/50 focus:bg-cream focus:outline-none disabled:opacity-55"
+      required={Boolean(action)}
+    >
+      <option value="">Select focus area</option>
+      <option value="Consulting roadmap">Consulting roadmap</option>
+      <option value="Platform / cloud architecture">Platform / cloud architecture</option>
+      <option value="Reliability program">Reliability program</option>
+      <option value="Team training">Team training</option>
+      <option value="Other / exploratory">Other / exploratory</option>
+    </select>
+  </label>
+
+  <label class="block space-y-2">
+    <span class="text-sm font-medium text-ink">Message</span>
+    <textarea
+      {...(action ? { name: 'message' } : { disabled: true })}
+      rows={6}
+      class="w-full resize-y rounded-3xl border border-ink/12 bg-warm-sand/50 px-4 py-3 text-sm text-ink placeholder:text-ink-muted/55 focus:border-brand/50 focus:bg-cream focus:outline-none disabled:opacity-55"
+      placeholder="Goals, stack, clouds, timeline"
+      required={Boolean(action)}
+    />
+  </label>
+
+  <label class="sr-only">
+    Leave blank
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+  </label>
+
+  {
+    action ? (
+      <>
+        <input type="hidden" name="_subject" value="CalciCloud — new inquiry from website" />
+        <button
+          type="submit"
+          class="w-full rounded-full border border-accent/55 bg-brand px-6 py-3 text-sm font-semibold text-cream shadow-[0_16px_40px_rgb(166_31_31_/_0.26)] ring-accent-yellow transition hover:bg-brand-deep sm:w-auto"
+        >
+          Send message
+        </button>
+      </>
+    ) : (
+      <button disabled type="button" class="rounded-full bg-ink/20 px-6 py-3 text-sm font-semibold text-ink-muted/70">
+        Send message (configure Formspree first)
+      </button>
+    )
+  }
+</form>

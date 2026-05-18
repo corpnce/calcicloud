@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import { siteName } from '@/config/site';
+
+const title = `Contact | ${siteName}`;
+const description =
+  'Reach CalciCloud for cloud & DevOps consulting inquiries, training cohorts and architecture discovery calls.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero
+    title="Tell us what good looks like three quarters out."
+    subtitle="Share context on goals, constraints and current pain — we respond with a crisp view of fit, sequencing and what to prepare on your side."
+  />
+
+  <section class="border-b border-ink/5 bg-gradient-to-b from-warm-sand/40 to-cream py-20 md:py-28">
+    <div class="mx-auto grid max-w-6xl gap-14 px-5 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:items-start md:px-8">
+      <div class="space-y-6">
+        <h2 class="font-serif-display text-3xl text-ink md:text-4xl">Direct line to the team</h2>
+        <p class="text-sm leading-relaxed text-ink-muted md:text-base">
+          Messages route through{' '}
+          <a
+            class="font-semibold text-brand underline decoration-brand/40 underline-offset-2"
+            href="https://formspree.io/"
+            target="_blank"
+            rel="noopener noreferrer">Formspree</a
+          > — reliable delivery and spam resistance.
+        </p>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+</BaseLayout>

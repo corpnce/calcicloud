@@ -1,0 +1,83 @@
+---
+import { skillCheckRoles, trainingTracks } from '@/data/training-page';
+
+const trackById = Object.fromEntries(trainingTracks.map((t) => [t.id, t]));
+---
+
+<aside
+  id="skill-check"
+  class="scroll-mt-28 lg:sticky lg:top-24 lg:self-start"
+  aria-labelledby="skill-check-heading"
+>
+  <div
+    class="blueprint-grid overflow-hidden rounded-2xl border border-cream/10 bg-ink p-5 shadow-[0_24px_60px_rgb(0_0_0_/_0.35)] ring-1 ring-brand/20 md:p-6"
+  >
+    <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-brand">Skill-Check</p>
+    <h2 id="skill-check-heading" class="mt-2 font-serif-display text-lg font-semibold text-cream">
+      Find your track fit
+    </h2>
+    <p class="mt-2 text-sm leading-relaxed text-cream/65">Select your current role to see the recommended path.</p>
+
+    <fieldset class="mt-5 space-y-2">
+      <legend class="sr-only">Your current role</legend>
+      {
+        skillCheckRoles.map((role) => (
+          <label class="flex cursor-pointer items-start gap-3 rounded-xl border border-cream/10 bg-cream/[0.04] px-3 py-2.5 transition has-[:checked]:border-brand/40 has-[:checked]:bg-brand/10 hover:border-cream/20">
+            <input
+              type="radio"
+              name="training-role"
+              value={role.id}
+              class="mt-0.5 accent-brand"
+              checked={role.id === 'junior-devops'}
+            />
+            <span class="text-sm font-medium text-cream/90">{role.label}</span>
+          </label>
+        ))
+      }
+    </fieldset>
+
+    <div
+      id="skill-check-result"
+      class="mt-5 rounded-xl border border-brand/25 bg-brand/10 p-4"
+      role="status"
+      aria-live="polite"
+    >
+      <p class="font-mono-tech text-[0.65rem] font-semibold uppercase tracking-wider text-brand">Recommended</p>
+      <p id="skill-check-track" class="mt-1 font-serif-display text-base font-semibold text-cream">
+        {trackById[skillCheckRoles[0].trackId].title}
+      </p>
+      <p id="skill-check-rationale" class="mt-2 text-sm leading-relaxed text-cream/75">
+        {skillCheckRoles[0].rationale}
+      </p>
+      <a
+        id="skill-check-link"
+        href={`#${skillCheckRoles[0].trackId}`}
+        class="mt-3 inline-flex text-sm font-semibold text-brand underline decoration-brand/40 underline-offset-2 hover:text-cream"
+      >
+        View track details →
+      </a>
+    </div>
+  </div>
+</aside>
+
+<script define:vars={{ skillCheckRoles, trackById }}>
+  const trackEl = document.getElementById('skill-check-track');
+  const rationaleEl = document.getElementById('skill-check-rationale');
+  const linkEl = document.getElementById('skill-check-link');
+  const inputs = document.querySelectorAll('input[name="training-role"]');
+
+  function update(roleId) {
+    const role = skillCheckRoles.find((r) => r.id === roleId);
+    if (!role || !trackEl || !rationaleEl || !linkEl) return;
+    const track = trackById[role.trackId];
+    trackEl.textContent = track.title;
+    rationaleEl.textContent = role.rationale;
+    linkEl.href = `#${role.trackId}`;
+  }
+
+  inputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      if (input.checked) update(input.value);
+    });
+  });
+</script>

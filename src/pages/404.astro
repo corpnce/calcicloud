@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ButtonLink from '@/components/ButtonLink.astro';
+import { siteName } from '@/config/site';
+
+const title = `Page not found | ${siteName}`;
+---
+
+<BaseLayout title={title} description="That page isn't here — let's get you home." noJsonLd={true}>
+  <section class="mx-auto flex min-h-[62vh] max-w-xl flex-col items-center justify-center gap-8 px-5 py-24 text-center md:py-28">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.26em] text-brand">404</p>
+      <h1 class="font-serif-display mt-4 text-4xl tracking-tight text-ink md:text-5xl">This path wandered off-route.</h1>
+      <p class="mx-auto mt-4 max-w-md text-base leading-relaxed text-ink-muted">
+        Broken links happen during migrations — the stable surface is waiting on the homepage.
+      </p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4">
+      <ButtonLink href="">Back home</ButtonLink>
+      <ButtonLink href="contact/" variant="outline">Contact us instead</ButtonLink>
+    </div>
+  </section>
+</BaseLayout>
