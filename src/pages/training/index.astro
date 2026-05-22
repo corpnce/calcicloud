@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ButtonLink from '@/components/ButtonLink.astro';
 import TrainingSkillCheck from '@/components/training/TrainingSkillCheck.astro';
-import { ethicsPillars, trainingTracks } from '@/data/training-page';
+import { cloudCourseReferences, ethicsPillars, trainingTracks } from '@/data/training-page';
 import { labsEmail, siteName } from '@/config/site';
 
 const title = `Training — Beyond Slideware | ${siteName}`;
@@ -143,7 +143,60 @@ const description =
     </div>
   </section>
 
-  <!-- Section 3: Ethics -->
+  <!-- Section 3: Cloud course reference -->
+  <section id="course-reference" class="scroll-mt-28 border-b border-ink/5 bg-cream py-20 md:py-28">
+    <div class="mx-auto max-w-6xl px-5 md:px-8">
+      <div class="max-w-3xl">
+        <p class="font-mono-tech text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+          <span class="mr-2 inline-block h-1 w-6 rounded-sm bg-accent-yellow align-middle" aria-hidden="true"></span>
+          Course Reference
+        </p>
+        <h2 class="mt-3 font-serif-display text-3xl font-bold text-ink md:text-4xl">
+          AWS, Azure, and GCP learning paths
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-ink-muted md:text-lg">
+          Use this as a reference map for cohort planning. We adapt these course areas into hands-on labs, architecture
+          reviews, and operational exercises based on your team's stack and maturity.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-8 lg:grid-cols-3">
+        {
+          cloudCourseReferences.map((group) => (
+            <article class="flex flex-col overflow-hidden rounded-2xl border border-ink/8 bg-warm-sand/35 shadow-[0_18px_48px_-28px_rgb(24_19_17_/_0.14)] ring-1 ring-ink/[0.04]">
+              <div class="border-b border-ink/8 bg-cream/80 p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="font-serif-display text-2xl font-semibold text-ink">{group.provider}</h3>
+                  <span class="rounded-full border border-accent/55 bg-accent/20 px-3 py-1 font-mono-tech text-xs font-bold text-brand">
+                    {group.courses.length} courses
+                  </span>
+                </div>
+                <p class="mt-3 text-sm leading-relaxed text-ink-muted">{group.note}</p>
+              </div>
+
+              <ul class="divide-y divide-ink/[0.06]" role="list">
+                {
+                  group.courses.map((course) => (
+                    <li class="bg-cream/60 p-5 transition hover:bg-warm-sand/55">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <p class="max-w-[16rem] text-sm font-semibold leading-snug text-ink">{course.name}</p>
+                        <span class="rounded-full border border-ink/10 bg-cream px-2.5 py-1 font-mono-tech text-[0.62rem] font-semibold uppercase tracking-wider text-ink-muted">
+                          {course.level}
+                        </span>
+                      </div>
+                      <p class="mt-2 text-xs leading-relaxed text-ink-muted">{course.focus}</p>
+                    </li>
+                  ))
+                }
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Ethics -->
   <section id="ethics" class="scroll-mt-28 border-b border-ink/5 bg-gradient-to-b from-warm-sand/50 to-cream py-20 md:py-28">
     <div class="mx-auto max-w-6xl px-5 md:px-8">
       <div class="max-w-2xl">
@@ -164,7 +217,7 @@ const description =
     </div>
   </section>
 
-  <!-- Section 4: Enrollment -->
+  <!-- Section 5: Enrollment -->
   <section id="enrollment" class="scroll-mt-28 blueprint-grid border-b border-cream/10 py-20 md:py-28">
     <div class="mx-auto max-w-6xl px-5 md:px-8">
       <div class="grid gap-10 lg:grid-cols-[1.1fr_minmax(0,0.9fr)] lg:items-center">
